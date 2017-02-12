@@ -3,7 +3,7 @@
 class Prime
 {
 
-    private static $countTest = 10;  // pow((1/4), $countTest)
+    private static $countTest = 10;  // error probability -> pow((1/4), $countTest)
 
     /**
      * 
