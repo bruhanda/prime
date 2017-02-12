@@ -3,7 +3,7 @@
 class Prime
 {
 
-    private static $countTest = 10;  // error probability -> pow((1/4), $countTest)
+    private static $countTest = 100;  // error probability -> pow((1/4), $countTest)
 
     /**
      * 
@@ -14,22 +14,21 @@ class Prime
 
     public static function findPrimeMiddleValue($m, $n)
     {
+        $lthRng =  ($n - $m);
 
-        $lthRng = (int) ($n - $m);
-
-        $midRange = (int) (round(($m + $n) / 2));
+        $midRange =  (round(($m + $n) / 2));
 
         for ($i = 0; $i <= round($lthRng / 2); $i++)
         {
 
-            $rght = $midRange + $i;
-            if ($rght < $n && self::isPrime($rght))
-                return $rght;
+            $rt = $midRange + $i;
+            if ($rt < $n && self::isPrime($rt))
+                return $rt;
 
 
-            $lft = $midRange - $i;
-            if ($i !== 0 && $lft > $m && self::isPrime($lft))
-                return $lft;
+            $lt = $midRange - $i;
+            if ($i !== 0 && $lt > $m && self::isPrime($lt))
+                return $lt;
         }
         return FALSE;
     }
@@ -79,6 +78,7 @@ class Prime
         for ($i = 0; $i < self::$countTest; $i++)
         {
             $a = rand(2, $n - 1);
+            
 
             $x = bcpowmod($a, $d, $n);
             if ($x == 1 || $x == $n - 1)
@@ -102,7 +102,8 @@ class Prime
 $start = microtime(TRUE);
 
 $m = 3;
-$n = 11;
+$n = 13;
+var_dump($n);
 
 $val = Prime::findPrimeMiddleValue($m, $n);
 printf('Ближе всего к центру интервала: %d %s', $val, '<br>');
