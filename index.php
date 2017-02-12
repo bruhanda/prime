@@ -99,8 +99,13 @@ class Prime
 
 $start = microtime(true);
 
-$val = Prime::findPrimeMiddleValue(3, 13);
-var_dump($val);
+$m=3;
+$n=11;
+
+$val = Prime::findPrimeMiddleValue($m, $n);
+printf('Ближе всего к центру интервала: %d %s', $val, '<br>');
+
+
 
 $time = microtime(true) - $start;
 printf('Скрипт выполнялся %.4F сек. %s', $time, '<br>');
