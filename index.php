@@ -17,8 +17,10 @@ class Prime
         $lthRng =  ($n - $m);
 
         $midRange =  (round(($m + $n) / 2));
+        
+        $cond=round($lthRng / 2);
 
-        for ($i = 0; $i <= round($lthRng / 2); $i++)
+        for ($i = 0; $i <= $cond; $i++)
         {
 
             $rt = $midRange + $i;
@@ -99,20 +101,18 @@ class Prime
 
 }
 
-$start = microtime(TRUE);
+
 
 $m = 3;
-$n = 13;
-var_dump($n);
+$n = 11;
+
+$start = microtime(TRUE);
+
+printf('Число m: %d %s', $m, '<br>');
+printf('Число n: %d %s', $n, '<br>');
 
 $val = Prime::findPrimeMiddleValue($m, $n);
 printf('Ближе всего к центру интервала: %d %s', $val, '<br>');
 
-
-
 $time = microtime(TRUE) - $start;
 printf('Скрипт выполнялся %.4F сек. %s', $time, '<br>');
-
-
-
-
