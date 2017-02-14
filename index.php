@@ -14,24 +14,30 @@ class Prime
 
     public static function findPrimeMiddleValue($m, $n)
     {
-        $lthRng =  ($n - $m);
+        $lthRng = ($n - $m);
+        $midRange = (round(($m + $n) / 2));
 
-        $midRange =  (round(($m + $n) / 2));
-        
-        $cond=round($lthRng / 2);
+        $cond = floor($lthRng / 2);
 
-        for ($i = 0; $i <= $cond; $i++)
+        if (self::isPrime($midRange))
+            return $midRange;
+
+        for ($i = 1; $i < $cond; $i++)
         {
 
             $rt = $midRange + $i;
-            if ($rt < $n && self::isPrime($rt))
+            if (self::isPrime($rt))
                 return $rt;
-
-
             $lt = $midRange - $i;
-            if ($i !== 0 && $lt > $m && self::isPrime($lt))
+            if (self::isPrime($lt))
                 return $lt;
         }
+
+        $lt = $midRange - $i;
+
+        if (self::isPrime($lt))
+            return $lt;
+
         return FALSE;
     }
 
@@ -80,7 +86,7 @@ class Prime
         for ($i = 0; $i < self::$countTest; $i++)
         {
             $a = rand(2, $n - 1);
-            
+
 
             $x = bcpowmod($a, $d, $n);
             if ($x == 1 || $x == $n - 1)
@@ -101,8 +107,6 @@ class Prime
 
 }
 
-
-
 $m = 3;
 $n = 11;
 
@@ -116,3 +120,7 @@ printf('Ближе всего к центру интервала: %d %s', $val, 
 
 $time = microtime(TRUE) - $start;
 printf('Скрипт выполнялся %.4F сек. %s', $time, '<br>');
+
+
+
+
