@@ -53,9 +53,7 @@ class Prime
         for ($x = 2; $x <= sqrt($n); $x++)
         {
             if ($n % $x == 0)
-            {
                 return FALSE;
-            }
         }
         return TRUE;
     }
