@@ -35,7 +35,7 @@ class Prime
 
         $lt = $midRange - $i;
 
-        if (self::isPrime($lt))
+        if ($lt>$m&&self::isPrime($lt))
             return $lt;
 
         return FALSE;
