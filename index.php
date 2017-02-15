@@ -24,18 +24,17 @@ class Prime
 
         for ($i = 1; $i < $cond; $i++)
         {
-
-            $rt = $midRange + $i;
-            if (self::isPrime($rt))
-                return $rt;
             $lt = $midRange - $i;
             if (self::isPrime($lt))
                 return $lt;
+            $rt = $midRange + $i;
+            if (self::isPrime($rt))
+                return $rt;
         }
 
         $lt = $midRange - $i;
 
-        if ($lt>$m&&self::isPrime($lt))
+        if ($lt > $m && self::isPrime($lt))
             return $lt;
 
         return FALSE;
